@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tangga Kesadaran — Tes Level Hawkins</title>
+<meta name="description" content="Catat dan renungkan level kesadaranmu berdasarkan Map of Consciousness David R. Hawkins.">
+<meta name="theme-color" content="#14222b">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tangga Kesadaran">
+<meta property="og:description" content="Catat dan renungkan level kesadaranmu, kapan saja.">
+<meta property="og:image" content="https://USERNAME.github.io/NAMA-REPO/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bg:#eef2f4;--sf:#fff;--ink:#14222b;--mut:#5b6b75;--ln:#d3dce1;--ac:#0e6f73;--acs:#d9eeee;--dg:#a33a3a}
+@media (prefers-color-scheme:dark){:root{--bg:#10191f;--sf:#17232b;--ink:#e6eef1;--mut:#93a5af;--ln:#2a3a44;--ac:#4fc1c4;--acs:#173a3d;--dg:#e07a7a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:600;line-height:1.2;margin:0 0 .5rem}
+main{max-width:760px;margin:0 auto;padding:1.2rem 1rem 4rem}
+header{padding:1.2rem 0 .6rem}
+.brand{display:flex;gap:.9rem;align-items:center}.brand img{border-radius:12px;flex:none}
+header h1{font-size:1.9rem}header p{margin:0;color:var(--mut)}
+nav{display:flex;gap:.25rem;border-bottom:1px solid var(--ln);margin:1rem 0;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:3px solid transparent;color:var(--mut);padding:.6rem .9rem;font:inherit;cursor:pointer;white-space:nowrap}
+nav button[aria-selected=true]{color:var(--ink);border-color:var(--ac);font-weight:600}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:1rem 1.1rem;margin-bottom:1rem}
+button.p,button.s{font:inherit;border-radius:8px;padding:.55rem 1rem;cursor:pointer;border:1px solid var(--ac)}
+button.p{background:var(--ac);color:var(--bg)}button.s{background:none;color:var(--ac)}
+button.d{background:none;border:0;color:var(--dg);cursor:pointer;font:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+label{display:block;font-size:.9rem;color:var(--mut);margin:.8rem 0 .25rem}
+textarea,input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--ln);border-radius:8px;padding:.55rem .7rem}
+textarea{min-height:72px;resize:vertical}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin:1rem 0}
+.scale button{font:inherit;line-height:1.25;background:var(--bg);color:var(--ink);border:1px solid var(--ln);border-radius:8px;padding:.7rem .2rem;cursor:pointer;font-size:.78rem}
+.scale button:hover{border-color:var(--ac);background:var(--acs)}
+.q{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.3rem;line-height:1.4;margin:1rem 0}
+.prog{height:6px;background:var(--ln);border-radius:3px;overflow:hidden}.prog i{display:block;height:100%;background:var(--ac)}
+.spec{position:relative;height:14px;border-radius:7px;margin:1.4rem 0 .4rem;background:linear-gradient(90deg,#6b3f5e 0%,#8a4a4a 20%,#b8863a 33%,#7aa04a 50%,#2f8f8a 70%,#e8c35a 100%)}
+.spec b{position:absolute;top:-7px;width:4px;height:28px;background:var(--ink);border-radius:2px;transform:translateX(-2px)}
+.big{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:3rem;line-height:1}
+.mut{color:var(--mut);font-size:.9rem}
+.lv{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.4rem}
+.lv button{font:inherit;text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--ln);border-radius:8px;padding:.5rem .6rem;cursor:pointer}
+.lv button[aria-pressed=true]{border-color:var(--ac);background:var(--acs);font-weight:600}
+.lv span{display:block;font-size:.78rem;color:var(--mut);font-weight:400}
+.ent{border-top:1px solid var(--ln);padding:.7rem 0}.ent:first-child{border:0}
+.ent summary{cursor:pointer;display:flex;gap:.8rem;align-items:baseline}
+.ent .v{font-weight:700;min-width:3rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem}
+.stats div{background:var(--bg);border-radius:8px;padding:.6rem .8rem}.stats b{display:block;font-size:1.4rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:.5rem .4rem;border-bottom:1px solid var(--ln);vertical-align:top}
+.hide{display:none}
+svg text{fill:var(--mut);font-size:11px}
+</style>
+</head>
+<body>
+<main>
+<header class="brand"><img src="assets/icon.svg" width="52" height="52" alt=""><div><h1>Tangga Kesadaran</h1><p>Catat dan renungkan level kesadaranmu — kapan saja, berdasarkan Map of Consciousness David R. Hawkins.</p></div></header>
+<nav role="tablist" id="nav"></nav>
+<section id="v"></section>
+<p class="mut">Alat ini untuk refleksi diri berdasarkan penilaian jujurmu sendiri. Ia bukan kalibrasi kinesiologi Hawkins dan bukan alat diagnosis. Angka adalah cermin, bukan nilai dirimu.</p>
+</main>
+<script>
+const L=[
+[20,"Malu","Penghinaan","Menyedihkan","Aku merasa hina, ingin menghilang, atau merasa tak pantas ada.","Beri diri satu tindakan kecil yang merawat; bicara pada orang yang aman."],
+[30,"Bersalah","Menyalahkan","Jahat","Aku terus menyalahkan diri atas sesuatu yang sudah terjadi.","Bedakan belajar dari menghukum; perbaiki yang bisa diperbaiki."],
+[50,"Apatis","Putus asa","Tanpa harapan","Aku tak bertenaga dan tak melihat gunanya berusaha.","Mulai dari gerak fisik terkecil; satu tugas selesai sudah cukup."],
+[75,"Duka","Penyesalan","Tragis","Aku larut dalam kehilangan dan penyesalan.","Izinkan kesedihan mengalir; cari kehadiran orang lain."],
+[100,"Takut","Cemas","Mengerikan","Aku cemas dan waspada berlebihan pada hal yang mungkin terjadi.","Pisahkan fakta dari bayangan; ambil satu langkah nyata."],
+[125,"Keinginan","Mendambakan","Mengecewakan","Aku dikuasai hasrat memiliki, mengejar, atau mengonsumsi sesuatu.","Tanyakan apa yang sebenarnya dicari di balik hasrat itu."],
+[150,"Marah","Benci","Memusuhi","Aku kesal, dendam, atau frustrasi pada orang atau keadaan.","Temukan kebutuhan atau luka di bawah marah; jeda sebelum bereaksi."],
+[175,"Bangga","Meremehkan","Menuntut","Aku merasa lebih unggul dan perlu membela atau membuktikan harga diri.","Amati apa yang dilindungi oleh kebanggaan; coba rendah hati."],
+[200,"Berani","Afirmasi","Memungkinkan","Aku siap menghadapi kenyataan dan memikul tanggung jawab.","Pertahankan kejujuran; ambil tindakan yang kamu tunda."],
+[250,"Netral","Kepercayaan","Memuaskan","Aku tenang dan luwes; baik-buruk tidak mengikatku.","Biarkan hasil jadi milik semesta; lepaskan kebutuhan mengendalikan."],
+[310,"Kesediaan","Optimisme","Penuh harap","Aku terbuka, mau belajar, dan siap melakukan yang perlu.","Jaga konsistensi; layani sesuatu yang lebih besar dari dirimu."],
+[350,"Penerimaan","Pemaafan","Selaras","Aku menerima keadaan dan memegang peranku tanpa menyalahkan.","Lihat diri sebagai sumber pengalaman; maafkan sepenuhnya."],
+[400,"Akal","Pemahaman","Bermakna","Aku melihat sebab-akibat dengan jernih dan berpikir seimbang.","Waspadai jebakan intelek; turunkan pemahaman ke hati."],
+[500,"Cinta","Penghormatan","Bersahabat","Aku merasakan kasih tanpa syarat dan memberi tanpa menghitung.","Perluas kasih ke yang sulit dicintai; kasih tanpa keterikatan."],
+[540,"Sukacita","Ketenangan","Lengkap","Aku bersyukur dan bahagia dengan tenang tanpa sebab dari luar.","Teruskan dalam kesetiaan pada praktik batin."],
+[600,"Damai","Kesadaran","Utuh","Pikiranku hening; aku menyaksikan segalanya mengalir damai.","Diam, hadir; biarkan tak ada yang perlu dilakukan."],
+[700,"Pencerahan","Tak terkatakan","Murni","Tak ada 'aku' yang terpisah; hanya kesadaran itu sendiri.","Tidak ada yang perlu ditambah."]];
+const SC=["Tidak sama sekali","Sedikit benar","Cukup benar","Sangat benar","Persis aku"];
+const QB={
+20:["Aku merasa ada yang salah pada diriku secara mendasar dan ingin bersembunyi dari orang lain.","Aku malu menjadi diriku dan takut orang melihat siapa aku sebenarnya.","Aku merasa tak berharga dan layak dihina."],
+30:["Penyesalan atas masa lalu terasa seperti dosa yang tak termaafkan.","Aku merasa pantas dihukum atas kesalahanku.","Rasa bersalah menghantuiku dan membuatku sulit menerima kebaikan."],
+50:["Aku tak peduli lagi dan merasa semua usaha sia-sia.","Aku merasa kosong, lesu, dan hanya menunggu waktu berlalu.","Aku menunda segalanya karena merasa tak ada yang akan berubah."],
+75:["Aku masih tenggelam dalam kehilangan dan sering menangisi yang telah pergi.","Aku terus mengenang apa yang hilang dan merasa hidup tak lagi sama.","Aku menyesali yang tak bisa kembali dan sulit melangkah."],
+100:["Pikiranku dipenuhi skenario buruk dan aku sulit tenang.","Aku menghindari sesuatu karena takut akan akibatnya.","Aku merasa terancam dan selalu bersiaga."],
+125:["Aku terus menginginkan lebih dan tak puas dengan apa yang ada.","Aku sulit menahan diri dari mengejar sesuatu yang kuinginkan.","Pikiranku sibuk pada apa yang belum kumiliki."],
+150:["Aku mudah tersulut dan menyimpan dendam pada seseorang.","Aku ingin membalas atau menyalahkan orang yang menurutku salah.","Aku merasa diperlakukan tidak adil dan marah karenanya."],
+175:["Aku merasa perlu dihormati dan sulit mengakui kesalahan.","Aku membandingkan diri dengan orang lain dan merasa lebih baik dari mereka.","Aku defensif saat dikritik dan ingin terlihat benar."],
+200:["Aku mengakui kenyataan apa adanya dan siap bertindak walau tidak nyaman.","Aku mengambil keputusan sulit dengan tanggung jawab penuh.","Aku merasa punya tenaga untuk berubah dan memperbaiki keadaan."],
+250:["Aku merasa cukup apa pun hasilnya dan tak perlu memaksa keadaan.","Aku tidak merasa harus menang atau membuktikan apa pun.","Aku percaya pada diriku dan prosesnya, sehingga hatiku ringan."],
+310:["Aku mau belajar dari siapa pun dan melakukan bagianku sepenuh hati.","Aku terbuka pada masukan dan bersedia berubah.","Aku memandang hidup dengan harapan dan siap melayani."],
+350:["Aku menerima orang dan keadaan apa adanya dan tak lagi menyalahkan.","Aku sudah memaafkan dan melihat semuanya sebagai bagian perjalananku.","Aku berdamai dengan apa yang terjadi, termasuk yang tak kusukai."],
+400:["Aku memahami persoalan secara jernih dan memutuskan dengan nalar seimbang.","Aku mampu melihat gambaran besar dan sebab-akibat tanpa terbawa emosi.","Aku menikmati memahami dan menjelaskan sesuatu secara mendalam."],
+500:["Aku merasakan kasih kepada semua makhluk, termasuk yang menyulitkanku.","Aku memberi tanpa berharap balasan dan hatiku lapang.","Aku memandang orang lain dengan hormat dan kasih yang tulus."],
+540:["Aku diliputi syukur yang tenang tanpa alasan tertentu.","Aku merasakan kebahagiaan yang hening, apa pun yang terjadi.","Aku melihat keindahan dan kesempurnaan dalam hal-hal biasa."],
+600:["Aku hadir sepenuhnya; pikiran diam dan segalanya terasa mengalir.","Aku merasakan kedamaian mendalam dan kesatuan dengan segala sesuatu.","Aku menyaksikan hidup berlangsung tanpa keinginan mengubahnya."],
+700:["Aku tak lagi merasa terpisah dari Yang Maha; hanya ada kesadaran itu.","Pembeda antara pengamat dan yang diamati lenyap.","Tidak ada yang tersisa selain kehadiran murni."]};
+const SEEN="hawkins.seen.v1";
+function pickQ(l){let sn={};try{sn=JSON.parse(localStorage.getItem(SEEN)||"{}")}catch(e){}
+const all=bankOf(l);let u=sn[l[0]]||[];if(u.length>=all.length)u=[];
+const left=all.map((t,i)=>i).filter(i=>!u.includes(i)),i=left[Math.floor(Math.random()*left.length)];
+sn[l[0]]=[...u,i];try{localStorage.setItem(SEEN,JSON.stringify(sn))}catch(e){}return all[i]}
+const RF={
+20:"Rasa malu sering bukan kebenaran tentang dirimu, melainkan suara lama yang terlalu sering kamu dengar. Suara siapa yang sedang kamu ulang?",
+30:"Rasa bersalah bisa menjadi kompas atau penjara. Pelajaran apa yang ingin kamu ambil, dan apa yang boleh dilepas?",
+50:"Lelah yang dalam minta diistirahatkan, bukan dihakimi. Hal kecil apa yang bisa kamu lakukan dalam lima menit?",
+75:"Duka adalah cinta yang kehilangan alamat. Apa yang masih ingin kamu sampaikan kepada yang pergi?",
+100:"Takut menunjuk pada sesuatu yang kamu anggap berharga. Apa yang sedang kamu lindungi?",
+125:"Hasrat menandakan ada kekosongan yang ingin diisi. Rasa apa yang sebenarnya kamu cari di balik yang kamu kejar?",
+150:"Marah sering menjaga luka yang belum diakui. Luka atau kebutuhan apa di bawah kemarahan ini?",
+175:"Kebanggaan rapuh karena harus terus dijaga. Apa yang kamu takut tunjukkan jika tidak membela diri?",
+200:"Di sini kamu berhenti menyalahkan dan mulai bertindak. Tanggung jawab apa yang bisa kamu ambil hari ini?",
+250:"Ketika hasil tak lagi mengikatmu, hati menjadi ringan. Apa yang bisa kamu lepaskan tanpa kehilangan arah?",
+310:"Kesediaan adalah pintu: mau belajar dan mau melakukan. Kepada siapa atau apa kamu ingin berguna?",
+350:"Menerima bukan menyerah, melainkan berhenti melawan kenyataan. Apa yang masih kamu tolak padahal sudah terjadi?",
+400:"Pemahaman memberi peta, tapi peta bukan wilayahnya. Apa yang kamu pahami di kepala tapi belum kamu hidupi?",
+500:"Kasih sejati tidak menimbang siapa yang pantas. Siapa yang paling sulit kamu doakan?",
+540:"Syukur yang tenang tak butuh alasan. Nikmat apa yang selama ini terlalu dekat untuk terlihat?",
+600:"Dalam hening, yang mengamati dan yang diamati makin dekat. Apa yang tersisa saat tak ada yang perlu kamu capai?",
+700:"Tak ada yang perlu ditambahkan. Adakah yang kamu perlukan selain hadir?"};
+const QX="hawkins.qx.v1";
+let XB={};try{XB=JSON.parse(localStorage.getItem(QX)||"{}")}catch(e){}
+const saveX=()=>{try{localStorage.setItem(QX,JSON.stringify(XB))}catch(e){}};
+const bankOf=l=>[l[4],...(QB[l[0]]||[]),...(XB[l[0]]||[])];
+const KEY="hawkins.entries.v1";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let E=[];try{E=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){E=[]}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(E))}catch(e){alert("Penyimpanan gagal. Ekspor data sekarang.")}};
+const lvOf=v=>L.reduce((a,l)=>Math.abs(l[0]-v)<Math.abs(a[0]-v)?l:a,L[0]);
+const pos=v=>Math.min(100,Math.max(0,(v-20)/680*100));
+const fmt=t=>new Date(t).toLocaleString("id-ID",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
+const tz=t=>{const d=new Date(t-new Date().getTimezoneOffset()*6e4);return d.toISOString().slice(0,16)};
+let tab="tes",qs=[],qi=0,ans=[],res=null,pick=null;
+const tabs=[["tes","Tes"],["catat","Catat langsung"],["riwayat","Riwayat"],["grafik","Grafik & insight"],["kalibrasi","Kalibrasi & data"],["tabel","Tabel level"]];
+function nav(){$("#nav").innerHTML=tabs.map(([k,n])=>`<button role="tab" aria-selected="${tab==k}" data-t="${k}">${n}</button>`).join("");}
+$("#nav").onclick=e=>{const t=e.target.dataset.t;if(t){tab=t;render()}};
+function render(){nav();({tes:vTes,catat:vCatat,riwayat:vRiw,grafik:vGraf,kalibrasi:()=>vKal(),tabel:vTabel})[tab]()}
+const spec=v=>`<div class="spec"><b style="left:${pos(v)}%"></b></div><div class="row mut" style="justify-content:space-between"><span>20</span><span>200 (titik balik)</span><span>700</span></div>`;
+const reflect=(x={})=>`<label>Pemicu: apa yang terjadi atau dipikirkan?</label><textarea id="f_t">${esc(x.trigger)}</textarea>
+<label>Refleksi dan insight</label><textarea id="f_i">${esc(x.insight)}</textarea>
+<label>Langkah kecil berikutnya</label><textarea id="f_a">${esc(x.action)}</textarea>`;
+const readF=()=>({trigger:$("#f_t").value.trim(),insight:$("#f_i").value.trim(),action:$("#f_a").value.trim()});
+
+function vTes(){
+  const v=$("#v");
+  if(res){const l=lvOf(res.score),d=lvOf(res.dom);
+    v.innerHTML=`<div class="card"><h2>Hasil tesmu</h2><div class="big">${res.score}</div>
+    <p>Skor tertimbang, dekat level <b>${l[1]}</b> (${l[2]}). Level paling terasa: <b>${d[1]}</b> (${d[0]}).</p>${spec(res.score)}
+    <p class="mut">Emosi: ${l[1]} · Pandangan hidup: ${l[3]} · Proses: ${l[2]}</p>
+    <p><b>Untuk naik selangkah:</b> ${l[5]}</p><p class="q" style="font-size:1.05rem">${esc(RF[l[0]])}</p></div>
+    <div class="card"><h3>Refleksi</h3>${reflect()}<div class="row" style="margin-top:1rem"><button class="p" id="sv">Simpan hasil</button><button class="s" id="rs">Buang dan ulangi</button></div></div>`;
+    $("#sv").onclick=()=>{E.push({id:crypto.randomUUID(),ts:Date.now(),mode:"tes",score:res.score,dom:res.dom,...readF()});save();res=null;tab="riwayat";render()};
+    $("#rs").onclick=()=>{res=null;qs=[];render()};return}
+  if(!qs.length){v.innerHTML=`<div class="card"><h2>Tes cepat 17 pernyataan</h2><p>Nilailah seberapa benar tiap pernyataan <b>untukmu saat ini</b> (beberapa hari terakhir atau saat ini juga). Jawab jujur, bukan seperti yang kamu cita-citakan. Redaksi pernyataan berganti tiap tes agar tidak terhafal. Pernyataan bernada luhur akan terasa menggoda untuk dinilai tinggi.</p><p class="mut"><b>Tidak sama sekali</b>: bukan aku. <b>Sedikit benar</b>: sesekali terasa. <b>Cukup benar</b>: kadang terasa. <b>Sangat benar</b>: sering terasa. <b>Persis aku</b>: itulah yang kurasakan sekarang.</p><button class="p" id="go">Mulai</button></div>`;
+    $("#go").onclick=()=>{qs=L.map(l=>[l[0],0,0,0,pickQ(l)]).sort(()=>Math.random()-.5);qi=0;ans={};render()};return}
+  const l=qs[qi];
+  v.innerHTML=`<div class="card"><div class="prog"><i style="width:${qi/qs.length*100}%"></i></div><p class="mut">Pertanyaan ${qi+1} dari ${qs.length}</p>
+  <p class="q">${esc(l[4])}</p><p class="mut" style="margin:0">Seberapa benar ini untukmu saat ini?</p><div class="scale">${SC.map((s,i)=>`<button data-a="${i}">${s}</button>`).join("")}</div>
+  <div class="row">${qi?'<button class="s" id="bk">Kembali</button>':""}<button class="d" id="ab">Batalkan tes</button></div></div>`;
+  v.querySelector(".scale").onclick=e=>{const a=e.target.dataset.a;if(a===undefined)return;ans[l[0]]=+a;
+    if(qi<qs.length-1){qi++;render()}else{finish()}};
+  if($("#bk"))$("#bk").onclick=()=>{qi--;render()};$("#ab").onclick=()=>{qs=[];render()};
+}
+function finish(){
+  let n=0,d=0,mx=-1,dom=20;
+  L.forEach(l=>{const r=ans[l[0]]||0;n+=r*l[0];d+=r;if(r>mx||(r==mx&&false)){mx=r;dom=l[0]}});
+  res={score:d?Math.round(n/d):20,dom};qs=[];render();
+}
+function vCatat(){
+  $("#v").innerHTML=`<div class="card"><h2>Catat level saat ini</h2><p class="mut">Pilih level yang paling menggambarkan kondisimu. Bisa untuk saat ini atau waktu lampau.</p>
+  <div class="lv" id="lv">${L.map(l=>`<button data-v="${l[0]}" aria-pressed="${pick==l[0]}">${l[0]} ${l[1]}<span>${esc(l[3])}</span></button>`).join("")}</div>
+  <label>Waktu</label><input type="datetime-local" id="f_d" value="${tz(Date.now())}">${reflect()}
+  <div style="margin-top:1rem"><button class="p" id="sv">Simpan catatan</button></div></div>`;
+  $("#lv").onclick=e=>{const b=e.target.closest("button");if(!b)return;pick=+b.dataset.v;
+    document.querySelectorAll("#lv button").forEach(x=>x.setAttribute("aria-pressed",x==b))};
+  $("#sv").onclick=()=>{if(pick==null){alert("Pilih satu level dulu.");return}
+    E.push({id:crypto.randomUUID(),ts:new Date($("#f_d").value).getTime()||Date.now(),mode:"catat",score:pick,dom:pick,...readF()});save();pick=null;tab="riwayat";render()};
+}
+function chart(a,m){
+  if(a.length<2)return`<p class="mut">Grafik muncul setelah ada minimal 2 entri.</p>`;
+  a=a.slice(-(m||30));const W=700,H=200,p=32,x=i=>p+i*(W-2*p)/(a.length-1),y=v=>H-24-(v-0)/700*(H-44);
+  return`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Grafik level dari waktu ke waktu"><line x1="${p}" x2="${W-p}" y1="${y(200)}" y2="${y(200)}" stroke="var(--ln)" stroke-dasharray="4 4"/><text x="${p}" y="${y(200)-4}">200</text>
+  <polyline fill="none" stroke="var(--ac)" stroke-width="2.5" points="${a.map((e,i)=>x(i)+","+y(e.score)).join(" ")}"/>${a.map((e,i)=>`<circle cx="${x(i)}" cy="${y(e.score)}" r="4" fill="var(--ac)"><title>${fmt(e.ts)}: ${e.score}</title></circle>`).join("")}</svg>`;
+}
+function vRiw(){
+  const s=[...E].sort((a,b)=>a.ts-b.ts),r=[...s].reverse(),w=s.filter(e=>e.ts>Date.now()-7*864e5);
+  const avg=a=>a.length?Math.round(a.reduce((t,e)=>t+e.score,0)/a.length):"-";
+  const last=s.slice(-5),prev=s.slice(-10,-5),tr=last.length&&prev.length?avg(last)-avg(prev):null;
+  $("#v").innerHTML=!E.length?`<div class="card"><h2>Belum ada catatan</h2><p>Mulai dari tab Tes atau Catat langsung.</p></div>`:
+  `<div class="card"><div class="stats"><div><b>${E.length}</b>entri</div><div><b>${avg(w)}</b>rata-rata 7 hari</div><div><b>${Math.max(...E.map(e=>e.score))}</b>tertinggi</div><div><b>${tr===null?"-":(tr>0?"+":"")+tr}</b>tren 5 entri terakhir</div></div>${chart(s)}</div>
+  <div class="card">${r.map(e=>{const l=lvOf(e.score);return`<details class="ent"><summary><span class="v">${e.score}</span><span>${l[1]} <span class="mut">${fmt(e.ts)} · ${e.mode=="tes"?"tes":"catatan"}</span></span></summary>
+  <div data-id="${e.id}">${reflectFor(e)}<div class="row" style="margin-top:.6rem"><button class="s ed">Simpan perubahan</button><button class="d dl">Hapus</button></div></div></details>`}).join("")}</div>`;
+  document.querySelectorAll(".ent").forEach(d=>{const box=d.querySelector("[data-id]"),id=box.dataset.id;
+    box.querySelector(".ed").onclick=()=>{const e=E.find(x=>x.id==id),g=c=>box.querySelector("."+c).value.trim();e.trigger=g("t");e.insight=g("i");e.action=g("a");save();box.querySelector(".ed").textContent="Tersimpan"};
+    box.querySelector(".dl").onclick=()=>{if(confirm("Hapus entri ini?")){E=E.filter(x=>x.id!=id);save();render()}}});
+}
+const reflectFor=e=>`<p class="mut"><i>${esc(RF[lvOf(e.score)[0]])}</i></p><label>Pemicu</label><textarea class="t">${esc(e.trigger)}</textarea><label>Refleksi dan insight</label><textarea class="i">${esc(e.insight)}</textarea><label>Langkah kecil</label><textarea class="a">${esc(e.action)}</textarea>`;
+function vTabel(){
+  $("#v").innerHTML=`<div class="card"><h2>Peta level</h2><p class="mut">Angka adalah skala logaritmik; level 200 adalah titik balik dari daya yang merusak ke daya yang menguatkan. Ketuk baris untuk melihat saran naik level.</p>
+  <table><tr><th>Level</th><th>Emosi</th><th>Pandangan</th></tr>${[...L].reverse().map(l=>`<tr><td><b>${l[0]}</b></td><td>${l[1]}<br><span class="mut">${esc(l[2])}</span></td><td>${esc(l[3])}<br><span class="mut">${esc(l[5])}</span></td></tr>`).join("")}</table></div>`;
+}
+function vData(){
+  $("#dt").innerHTML=`<h2>Data dan cadangan</h2><p>Catatan tersimpan di browser ini (localStorage). Ekspor secara berkala sebagai cadangan, atau untuk memindahkan ke perangkat lain.</p>
+  <div class="row"><button class="p" id="xj">Ekspor JSON</button><button class="s" id="xc">Ekspor CSV</button><label class="s" style="margin:0;padding:.55rem 1rem;border:1px solid var(--ac);border-radius:8px;cursor:pointer;color:var(--ac)">Impor JSON<input type="file" id="im" accept=".json" class="hide"></label></div></div>`;
+  const dl=(n,t,m)=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:m}));a.download=n;a.click()};
+  $("#xj").onclick=()=>dl("hawkins-data.json",JSON.stringify(E,null,2),"application/json");
+  $("#xc").onclick=()=>{const q=s=>'"'+String(s??"").replace(/"/g,'""')+'"';dl("hawkins-data.csv",["waktu,skor,mode,pemicu,refleksi,langkah",...E.map(e=>[new Date(e.ts).toISOString(),e.score,e.mode,q(e.trigger),q(e.insight),q(e.action)].join(","))].join("\n"),"text/csv")};
+  $("#im").onchange=async e=>{try{const a=JSON.parse(await e.target.files[0].text());if(!Array.isArray(a))throw 0;const ids=new Set(E.map(x=>x.id));let n=0;a.forEach(x=>{if(x&&x.id&&typeof x.score=="number"&&!ids.has(x.id)){E.push(x);n++}});save();alert(n+" entri diimpor.");render()}catch(_){alert("File tidak valid.")}};
+}
+let rng=30;
+function vGraf(){
+  const s=[...E].sort((a,b)=>a.ts-b.ts),a=rng?s.filter(e=>e.ts>Date.now()-rng*864e5):s;
+  $("#v").innerHTML=!E.length?`<div class="card"><h2>Belum ada data</h2><p>Grafik dan insight muncul setelah kamu menyimpan tes atau catatan.</p></div>`:
+  `<div class="card"><div class="row">${[[7,"7 hari"],[30,"30 hari"],[90,"90 hari"],[0,"Semua"]].map(([r,n])=>`<button class="${rng==r?"p":"s"}" data-r="${r}">${n}</button>`).join("")}</div>${chart(a,60)}</div>
+  <div class="card"><h3>Sebaran level</h3>${dist(a)}</div>
+  <div class="card"><h3>Insight dari catatanmu</h3>${insights(a)}</div>${renungan(s)}`;
+  document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rng=+b.dataset.r;render()});
+}
+function dist(a){
+  if(!a.length)return`<p class="mut">Tidak ada entri pada rentang ini.</p>`;
+  const c={};a.forEach(e=>{const l=lvOf(e.score);c[l[0]]=(c[l[0]]||0)+1});const mx=Math.max(...Object.values(c));
+  return Object.entries(c).sort((x,y)=>y[0]-x[0]).map(([v,n])=>`<div class="row" style="flex-wrap:nowrap;margin:.25rem 0"><span style="width:7.5rem">${v} ${lvOf(+v)[1]}</span><div style="flex:1;background:var(--bg);border-radius:4px"><i style="display:block;height:12px;width:${n/mx*100}%;background:var(--ac);border-radius:4px"></i></div><span>${n}</span></div>`).join("");
+}
+function insights(a){
+  if(a.length<3)return`<p class="mut">Insight muncul setelah ada minimal 3 entri pada rentang ini.</p>`;
+  const m=x=>x.reduce((t,v)=>t+v,0)/x.length,sc=a.map(e=>e.score),avg=Math.round(m(sc)),sd=Math.round(Math.sqrt(m(sc.map(v=>(v-avg)**2))));
+  const up=Math.round(sc.filter(v=>v>=200).length/sc.length*100),h=Math.floor(sc.length/2),d=Math.round(m(sc.slice(h))-m(sc.slice(0,h)));
+  const cnt={};a.forEach(e=>{const k=lvOf(e.score)[1];cnt[k]=(cnt[k]||0)+1});const top=Object.entries(cnt).sort((x,y)=>y[1]-x[1])[0];
+  const P=[["pagi",4,10],["siang",10,15],["sore",15,19],["malam",19,28]],pr={};
+  a.forEach(e=>{let hr=new Date(e.ts).getHours();if(hr<4)hr+=24;const p=P.find(p=>hr>=p[1]&&hr<p[2]);(pr[p[0]]=pr[p[0]]||[]).push(e.score)});
+  const pe=Object.entries(pr).filter(([k,v])=>v.length>=2).map(([k,v])=>[k,Math.round(m(v))]).sort((x,y)=>y[1]-x[1]);
+  const stop=new Set("yang dan dari untuk dengan saya itu ini karena tidak pada ada juga atau lagi bisa saat sudah masih hari".split(" ")),wc={};
+  a.forEach(e=>((e.trigger||"").toLowerCase().match(/[a-z]{4,}/g)||[]).forEach(w=>{if(!stop.has(w))wc[w]=(wc[w]||0)+1}));
+  const tw=Object.entries(wc).filter(x=>x[1]>=2).sort((x,y)=>y[1]-x[1]).slice(0,5).map(x=>x[0]+" ("+x[1]+"x)");
+  const li=[`Rata-rata ${avg} (${lvOf(avg)[1]}); ${up}% entri berada di level 200 atau lebih.`,
+   `Tren: ${d>5?"naik "+d+" poin":d<-5?"turun "+Math.abs(d)+" poin":"relatif datar"} dibanding paruh awal rentang ini.`,
+   `Level yang paling sering muncul: ${top[0]} (${top[1]} kali).`,
+   sd>100?`Naik-turunmu lebar (simpangan ${sd}); cari pola pemicunya di catatan.`:`Kondisimu cukup stabil (simpangan ${sd}).`];
+  if(pe.length>1)li.push(`Waktu dengan rata-rata tertinggi: ${pe[0][0]} (${pe[0][1]}); terendah: ${pe[pe.length-1][0]} (${pe[pe.length-1][1]}).`);
+  if(tw.length)li.push("Kata yang sering muncul di pemicu: "+tw.join(", ")+".");
+  return`<ul>${li.map(t=>`<li>${esc(t)}</li>`).join("")}</ul><p class="mut">Dihitung otomatis dari catatanmu. Anggap sebagai petunjuk, bukan kesimpulan.</p>`;
+}
+const renungan=s=>{if(!s.length)return"";const l=lvOf(s[s.length-1].score);return`<div class="card"><h3>Renungan untuk level ${l[1]}</h3><p class="q" style="font-size:1.1rem">${esc(RF[l[0]])}</p><p class="mut">Tulis jawabanmu di kolom refleksi pada entri terakhir di tab Riwayat.</p></div>`};
+function vKal(msg=""){
+  const T=E.filter(e=>e.mode=="tes"),C=E.filter(e=>e.mode=="catat"),m=x=>Math.round(x.reduce((t,e)=>t+e.score,0)/x.length);
+  const bias=T.length>=3&&C.length>=3?`Rata-rata hasil tes ${m(T)}, catatan langsungmu ${m(C)} (selisih ${m(T)-m(C)}). Selisih besar berarti salah satu cara menilai condong terlalu tinggi atau rendah; pertimbangkan saat membaca grafik.`:"Perbandingan tes dan catatan langsung muncul setelah ada minimal 3 entri tes dan 3 catatan langsung.";
+  $("#v").innerHTML=`<div class="card"><h2>Kalibrasi soal</h2><p>Perbarui bank soal tanpa mengedit kode: ubah <code>soal.json</code> di repo GitHub, lalu tekan tombol ini di perangkat mana pun.</p>
+  <div class="row"><button class="p" id="ku">Perbarui soal</button><button class="s" id="kr">Segarkan rotasi</button></div><p class="mut" id="um" role="status">${esc(msg)}</p>
+  <p class="mut">Jumlah soal per level: ${L.map(l=>l[0]+": "+bankOf(l).length).join(" · ")}</p>
+  <label>Tambah soal sendiri untuk level</label><select id="kl">${L.map(l=>`<option value="${l[0]}">${l[0]} ${l[1]}</option>`).join("")}</select>
+  <label>Pernyataan (sudut pandang "aku")</label><textarea id="kt"></textarea>
+  <div class="row" style="margin-top:.6rem"><button class="s" id="ka">Tambah soal</button><button class="d" id="kx">Hapus semua soal tambahan</button></div></div>
+  <div class="card"><h3>Cek bias penilaian</h3><p>${esc(bias)}</p></div><div class="card" id="dt"></div>`;
+  $("#ku").onclick=upd;
+  $("#kr").onclick=()=>{try{localStorage.removeItem(SEEN)}catch(e){}vKal("Rotasi soal diatur ulang.")};
+  $("#ka").onclick=()=>{const t=$("#kt").value.trim();if(t.length<10){vKalMsg("Tulis pernyataan minimal 10 karakter.");return}const k=$("#kl").value;(XB[k]=XB[k]||[]).push(t);saveX();vKal("Soal ditambahkan.")};
+  $("#kx").onclick=()=>{if(confirm("Hapus semua soal tambahan?")){XB={};saveX();vKal("Soal tambahan dihapus.")}};
+  vData();
+}
+const vKalMsg=t=>{$("#um").textContent=t};
+async function upd(){
+  vKalMsg("Memeriksa soal.json ...");
+  try{const r=await fetch("soal.json?ts="+Date.now(),{cache:"no-store"});if(!r.ok)throw 0;const j=await r.json();let n=0;
+    L.forEach(l=>{const cur=new Set(bankOf(l));(Array.isArray(j[l[0]])?j[l[0]]:[]).forEach(t=>{t=typeof t=="string"?t.trim():"";if(t&&!cur.has(t)){(XB[l[0]]=XB[l[0]]||[]).push(t);cur.add(t);n++}})});
+    saveX();vKal(n?n+" soal baru ditambahkan.":"Sudah yang terbaru; tidak ada soal baru.");
+  }catch(e){vKalMsg("Gagal memuat soal.json. Pastikan file ada di repo yang sama dan aplikasi dibuka lewat alamat GitHub Pages, bukan dari file lokal.")}
+}
+render();
+</script>
+</body>
+</html>
