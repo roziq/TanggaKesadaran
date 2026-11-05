@@ -37,7 +37,6 @@ def load(path):
 def build_prompt_for_level(level_num, level_name, existing_items):
     """Membangun prompt khusus untuk satu level tertentu."""
     recent = existing_items.get(str(level_num), [])[-8:]
-    levels_str = f"{level_num}: {level_name}"
     return f"""Kamu membantu menyusun bank pernyataan untuk aplikasi refleksi diri berbasis Map of Consciousness David R. Hawkins.
 
 Tugas: Tulis tepat {PER_RUN} pernyataan BARU untuk level kesadaran **{level_name} (Level {level_num})**.
@@ -106,9 +105,9 @@ def _gemini_once(prompt, key, model):
 
 
 def call_gemini(prompt, key):
-    """Coba model utama; jika gagal, coba model cadangan (GEMINI_FALLBACKS)."""
-    models = [os.getenv("GEMINI_MODEL", "gemini-2.5-flash")]
-    models += [m.strip() for m in os.getenv("GEMINI_FALLBACKS", "gemini-2.0-flash").split(",") if m.strip()]
+    """Coba model utama (gemini-3.8-flash); jika gagal, coba model cadangan."""
+    models = [os.getenv("GEMINI_MODEL", "gemini-3.8-flash")]
+    models += [m.strip() for m in os.getenv("GEMINI_FALLBACKS", "gemini-3.5-flash").split(",") if m.strip()]
     err = None
     for model in dict.fromkeys(models):
         try:
@@ -136,14 +135,14 @@ def call_claude(prompt, key):
 
 
 def call_api(prompt):
-    """Pakai Gemini (gratis) jika GEMINI_API_KEY ada, kalau tidak pakai Claude."""
+    """Pakai Gemini jika GEMINI_API_KEY ada, kalau tidak pakai Claude."""
     gem = os.environ.get("GEMINI_API_KEY")
     ant = os.environ.get("ANTHROPIC_API_KEY")
     if gem:
         return call_gemini(prompt, gem)
     if ant:
         return call_claude(prompt, ant)
-    sys.exit("Atur secret GEMINI_API_KEY (gratis) atau ANTHROPIC_API_KEY di repo.")
+    sys.exit("Atur secret GEMINI_API_KEY atau ANTHROPIC_API_KEY di repo.")
 
 
 def parse(text):
