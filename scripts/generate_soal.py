@@ -7,6 +7,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -51,18 +52,40 @@ Contoh pernyataan yang sudah ada (hindari kemiripan):
 Keluaran: hanya satu objek JSON. Kunci adalah angka level sebagai string, nilai adalah array berisi {PER_RUN} string. Tanpa teks lain."""
 
 
-def _send(req, name):
-    try:
-        with urllib.request.urlopen(req, timeout=90) as r:
-            return json.load(r)
-    except urllib.error.HTTPError as e:
-        sys.exit(f"{name} error {e.code}: {e.read().decode(errors='replace')[:300]}")
-    except urllib.error.URLError as e:
-        sys.exit(f"{name} tidak terjangkau: {e.reason}")
+RETRY_CODES = {429, 500, 502, 503, 504}
 
 
-def call_gemini(prompt, key):
-    model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+class ApiError(Exception):
+    def __init__(self, code, msg):
+        super().__init__(msg)
+        self.code = code
+
+
+def _send(req, name, tries=5):
+    """Kirim permintaan; ulangi dengan jeda bertambah jika server sibuk."""
+    delay = 10
+    for i in range(tries):
+        last = i == tries - 1
+        try:
+            with urllib.request.urlopen(req, timeout=90) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode(errors="replace")[:300]
+            if e.code in RETRY_CODES and not last:
+                print(f"{name} {e.code}, coba lagi dalam {delay} detik ...", file=sys.stderr)
+                time.sleep(delay)
+                delay = min(delay * 2, 120)
+                continue
+            raise ApiError(e.code, f"{name} error {e.code}: {msg}")
+        except urllib.error.URLError as e:
+            if not last:
+                time.sleep(delay)
+                delay = min(delay * 2, 120)
+                continue
+            raise ApiError(0, f"{name} tidak terjangkau: {e.reason}")
+
+
+def _gemini_once(prompt, key, model):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
@@ -71,12 +94,28 @@ def call_gemini(prompt, key):
     }).encode()
     req = urllib.request.Request(url, data=body, method="POST", headers={
         "x-goog-api-key": key, "content-type": "application/json"})
-    data = _send(req, "Gemini")
+    data = _send(req, f"Gemini ({model})")
     try:
         parts = data["candidates"][0]["content"]["parts"]
     except (KeyError, IndexError):
-        sys.exit("Gemini tidak mengembalikan teks: " + json.dumps(data)[:300])
+        raise ApiError(0, "Gemini tidak mengembalikan teks: " + json.dumps(data)[:300])
     return "".join(p.get("text", "") for p in parts)
+
+
+def call_gemini(prompt, key):
+    """Coba model utama; jika gagal, coba model cadangan (GEMINI_FALLBACKS)."""
+    models = [os.getenv("GEMINI_MODEL", "gemini-3.8-flash")]
+    models += [m.strip() for m in os.getenv("GEMINI_FALLBACKS", "gemini-3.5-flash").split(",") if m.strip()]
+    err = None
+    for model in dict.fromkeys(models):
+        try:
+            return _gemini_once(prompt, key, model)
+        except ApiError as e:
+            if e.code in (400, 401, 403):  # masalah kunci/permintaan: ganti model tidak membantu
+                sys.exit(str(e))
+            print(f"Gagal dengan {model}: {e}", file=sys.stderr)
+            err = e
+    sys.exit(str(err))
 
 
 def call_claude(prompt, key):
@@ -86,7 +125,10 @@ def call_claude(prompt, key):
         "https://api.anthropic.com/v1/messages", data=body, method="POST",
         headers={"x-api-key": key, "anthropic-version": "2023-06-01",
                  "content-type": "application/json"})
-    data = _send(req, "Claude")
+    try:
+        data = _send(req, "Claude")
+    except ApiError as e:
+        sys.exit(str(e))
     return "".join(b.get("text", "") for b in data.get("content", []))
 
 
