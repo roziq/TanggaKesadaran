@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Tambah soal baru ke soal.json lewat Claude API. Dijalankan oleh GitHub Actions.
-
-Butuh secret ANTHROPIC_API_KEY. Tanpa dependensi luar.
+"""Tambah soal baru ke soal.json lewat Gemini API (gratis) atau Claude API.
+Dijalankan oleh GitHub Actions. Butuh salah satu secret: GEMINI_API_KEY atau
+ANTHROPIC_API_KEY. Tanpa dependensi luar.
 """
 import json
 import os
@@ -51,22 +51,54 @@ Contoh pernyataan yang sudah ada (hindari kemiripan):
 Keluaran: hanya satu objek JSON. Kunci adalah angka level sebagai string, nilai adalah array berisi {PER_RUN} string. Tanpa teks lain."""
 
 
-def call_api(prompt):
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        sys.exit("ANTHROPIC_API_KEY belum diatur sebagai secret repo.")
+def _send(req, name):
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        sys.exit(f"{name} error {e.code}: {e.read().decode(errors='replace')[:300]}")
+    except urllib.error.URLError as e:
+        sys.exit(f"{name} tidak terjangkau: {e.reason}")
+
+
+def call_gemini(prompt, key):
+    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+    body = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"responseMimeType": "application/json",
+                             "maxOutputTokens": 8192, "temperature": 1.0},
+    }).encode()
+    req = urllib.request.Request(url, data=body, method="POST", headers={
+        "x-goog-api-key": key, "content-type": "application/json"})
+    data = _send(req, "Gemini")
+    try:
+        parts = data["candidates"][0]["content"]["parts"]
+    except (KeyError, IndexError):
+        sys.exit("Gemini tidak mengembalikan teks: " + json.dumps(data)[:300])
+    return "".join(p.get("text", "") for p in parts)
+
+
+def call_claude(prompt, key):
     body = json.dumps({"model": MODEL, "max_tokens": 3000,
                        "messages": [{"role": "user", "content": prompt}]}).encode()
     req = urllib.request.Request(
         "https://api.anthropic.com/v1/messages", data=body, method="POST",
         headers={"x-api-key": key, "anthropic-version": "2023-06-01",
                  "content-type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=90) as r:
-            data = json.load(r)
-    except urllib.error.HTTPError as e:
-        sys.exit(f"API error {e.code}: {e.read().decode(errors='replace')[:300]}")
+    data = _send(req, "Claude")
     return "".join(b.get("text", "") for b in data.get("content", []))
+
+
+def call_api(prompt):
+    """Pakai Gemini (gratis) jika GEMINI_API_KEY ada, kalau tidak pakai Claude."""
+    gem = os.environ.get("GEMINI_API_KEY")
+    ant = os.environ.get("ANTHROPIC_API_KEY")
+    if gem:
+        return call_gemini(prompt, gem)
+    if ant:
+        return call_claude(prompt, ant)
+    sys.exit("Atur secret GEMINI_API_KEY (gratis) atau ANTHROPIC_API_KEY di repo.")
 
 
 def parse(text):
