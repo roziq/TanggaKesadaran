@@ -28,7 +28,7 @@ Aplikasi web sederhana untuk mencatat dan merenungkan level kesadaran berdasarka
 │   ├── apple-touch-icon.png
 │   └── og-image.png / og-image.svg
 ├── scripts/
-│   └── generate_soal.py           # pembuat soal baru lewat Claude API
+│   └── generate_soal.py           # pembuat soal baru lewat Gemini atau Claude API
 └── .github/workflows/
     └── update-soal.yml            # jadwal mingguan untuk skrip di atas
 ```
@@ -84,12 +84,14 @@ Edit file ini di GitHub, lalu tekan **Perbarui soal** di tab Kalibrasi & data. S
 
 ### Otomatis dengan GitHub Action
 
-Workflow `update-soal.yml` berjalan tiap Minggu pukul 20:00 UTC (Senin 03:00 WIB) dan bisa dijalankan manual dari tab **Actions**. Ia meminta Claude menulis 2 pernyataan baru per level, lalu menyimpannya ke `soal.json`.
+Workflow `update-soal.yml` berjalan tiap Minggu pukul 20:00 UTC (Senin 03:00 WIB) dan bisa dijalankan manual dari tab **Actions**. Ia meminta model AI menulis 2 pernyataan baru per level, lalu menyimpannya ke `soal.json`.
 
-Pemasangan:
+Skrip mendukung dua penyedia. Jika `GEMINI_API_KEY` ada, skrip memakai Gemini (punya tier gratis). Jika tidak, skrip memakai Claude lewat `ANTHROPIC_API_KEY` (berbayar).
 
-1. Buka **Settings**, **Secrets and variables**, **Actions**, lalu **New repository secret**.
-2. Isi nama `ANTHROPIC_API_KEY` dan nilai kunci API dari console.anthropic.com.
+Pemasangan dengan Gemini (gratis):
+
+1. Buka aistudio.google.com, masuk dengan akun Google, lalu klik **Get API key** dan buat kunci. Salin kuncinya.
+2. Di GitHub buka **Settings**, **Secrets and variables**, **Actions**, lalu **New repository secret**. Isi nama `GEMINI_API_KEY` dan nilai kunci tadi.
 3. Buka tab **Actions**, pilih **Update soal**, lalu **Run workflow** untuk mencoba.
 
 Pengaturan opsional lewat variabel lingkungan di skrip:
@@ -98,9 +100,15 @@ Pengaturan opsional lewat variabel lingkungan di skrip:
 |---|---|---|
 | `SOAL_PER_LEVEL` | `2` | Jumlah soal baru per level tiap kali jalan |
 | `SOAL_MAX_PER_LEVEL` | `40` | Batas soal tambahan per level |
-| `SOAL_MODEL` | `claude-sonnet-5-5` | Model yang dipakai |
+| `GEMINI_MODEL` | `gemini-2.5-flash` | Model Gemini yang dipakai |
+| `SOAL_MODEL` | `claude-sonnet-5-5` | Model Claude yang dipakai (jika memakai Claude) |
 
-Soal hasil otomatis langsung masuk ke `soal.json` tanpa tinjauan. Baca isinya sesekali dan hapus kalimat yang janggal. Kunci API hanya tersimpan di secret GitHub dan tidak pernah masuk ke halaman aplikasi.
+Catatan:
+- Batas tier gratis Google bisa berubah; cek angka terbaru di dashboard AI Studio. Satu panggilan per minggu jauh di bawah batas itu.
+- Nama model Gemini sering berganti. Jika workflow gagal dengan pesan model tidak ditemukan, ganti `GEMINI_MODEL` dengan nama model terbaru yang tersedia di AI Studio.
+- Skrip hanya mengirim perintah dan contoh kalimat soal. Catatan dan hasil tesmu tidak pernah dikirim; semuanya tetap di browser.
+- Soal hasil otomatis langsung masuk ke `soal.json` tanpa tinjauan. Baca isinya sesekali dan hapus kalimat yang janggal.
+- Kunci API hanya tersimpan di secret GitHub dan tidak pernah masuk ke halaman aplikasi.
 
 ## Kustomisasi
 
